@@ -40,3 +40,12 @@
   font-style: normal;
   font-weight: 700;
 }
+
+@font-face {
+  font-family: "SuisseIntl";
+  src: url('./vendor/fonts/SuisseIntl/SuisseIntl-SemiBold.ttf') format('truetype'),
+    url('./vendor/fonts/SuisseIntl/SuisseIntl-SemiBold.woff') format('woff'),
+    url('./vendor/fonts/SuisseIntl/SuisseIntl-SemiBold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+}
