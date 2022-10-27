@@ -1,14 +1,42 @@
 @import url(./vendor/css/normalize.css);
 
-@font-face {
-  font-family: "Inter";
-  src: url(./vendor/fonts/Inter/Inter-Regular.ttf) format("truetype"),
-  url(./vendor/fonts/Inter/Inter-Medium.ttf) format("truetype"),
-  url(./vendor/fonts/Inter/Inter-SemiBold.ttf) format("truetype"),
-  url(./vendor/fonts/Inter/Inter-Bold.ttf) format("truetype")
+.page {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
 }
 
 @font-face {
-  font-family: "SuisseIntl";
-  src: url(./vendor/fonts/SuisseIntl/SuisseIntl-SemiBold.ttf);
+  font-family: "Inter";
+  src: url('./vendor/fonts/Inter/Inter-Regular.ttf') format('truetype'),
+    url('./vendor/fonts/Inter/Inter-Regular.woff') format('woff'),
+    url('./vendor/fonts/Inter/Inter-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url('./vendor/fonts/Inter/Inter-Medium.ttf') format('truetype'),
+    url('./vendor/fonts/Inter/Inter-Medium.woff') format('woff'),
+    url('./vendor/fonts/Inter/Inter-Medium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url('./vendor/fonts/Inter/Inter-SemiBold.ttf') format('truetype'),
+    url('./vendor/fonts/Inter/Inter-SemiBold.woff') format('woff'),
+    url('./vendor/fonts/Inter/Inter-SemiBold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url('./vendor/fonts/Inter/Inter-Bold.ttf') format('truetype'),
+    url('./vendor/fonts/Inter/Inter-Bold.woff') format('woff'),
+    url('./vendor/fonts/Inter/Inter-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
 }
