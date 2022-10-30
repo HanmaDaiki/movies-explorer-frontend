@@ -3,3 +3,9 @@
   align-items: center;
   gap: 30px;
 }
+
+@media screen and (max-width: 320px) {
+  .authorization {
+    gap: 14px;
+  }
+}

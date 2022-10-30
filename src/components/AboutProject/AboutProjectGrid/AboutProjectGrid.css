@@ -1,0 +1,13 @@
+.about-project__grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 40px;
+  margin-top: 70px;
+}
+
+@media screen and (max-width: 615px) {
+  .about-project__grid  {
+    grid-template-columns: 100%;
+    gap: 58px;
+  }
+}

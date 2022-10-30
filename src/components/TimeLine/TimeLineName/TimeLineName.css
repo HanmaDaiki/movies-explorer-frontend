@@ -1,0 +1,14 @@
+.time-line__name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8b8b8b;
+  text-align: center;
+}
+
+@media screen and (max-width: 615px) {
+  .time-line__name {
+    font-size: 11px;
+    line-height: 12.74px;
+  }
+}
