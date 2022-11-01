@@ -1,0 +1,25 @@
+.techs__list-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.94px;
+  color: #fff;
+  background-color: #303030;
+  border-radius: 10px;
+  width: 90px;
+  height: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__list-element {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
