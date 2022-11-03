@@ -1,0 +1,17 @@
+.cv__info {
+  display: flex;
+  width: 600px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 868px) {
+  .cv__info {
+    width: 348px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cv__info {
+    width: 292px;
+  }
+}

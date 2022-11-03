@@ -1,0 +1,20 @@
+.portfolio__element-icon {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 60px;
+  color: #fff;
+  letter-spacing: -.04em;
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio__element-icon {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .portfolio__element-icon {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
