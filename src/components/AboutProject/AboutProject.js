@@ -6,7 +6,7 @@ import AboutProjectGrid from './AboutProjectGrid/AboutProjectGrid';
 
 const AboutProject = () => {
   return (
-    <section className='about-project'>
+    <section className='about-project' id='about-project'>
       <SectionHeader textHeader='О проекте'/>
       <AboutProjectGrid />
       <TimeLine />

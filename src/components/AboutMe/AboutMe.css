@@ -1,15 +1,15 @@
-.about-project {
+.about-me {
   margin: 110px 70px;
 }
 
 @media screen and (max-width: 768px) {
-  .about-project  {
+  .about-me  {
     margin: 90px 50px;
   }
 }
 
 @media screen and (max-width: 410px) {
-  .about-project  {
+  .about-me {
     margin: 70px 18px;
   }
 }

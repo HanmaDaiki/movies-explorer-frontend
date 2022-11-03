@@ -1,9 +1,9 @@
 import React from 'react';
 import './PromoNavElement.css';
 
-const PromoNavElement = ({ textElement }) => {
+const PromoNavElement = ({ textElement, goTo }) => {
   return (
-    <a href='/' className='promo__nav-element'>
+    <a href={`#${goTo}`} className='promo__nav-element'>
       { textElement }
     </a>
   );

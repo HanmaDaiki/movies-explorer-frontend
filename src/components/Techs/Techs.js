@@ -5,7 +5,7 @@ import TechsAbout from './TechsAbout/TechsAbout';
 
 const Techs = () => {
   return (
-    <section className='techs'>
+    <section className='techs' id='techs'>
       <SectionHeader textHeader="Технологии" />
       <TechsAbout />
     </section>
