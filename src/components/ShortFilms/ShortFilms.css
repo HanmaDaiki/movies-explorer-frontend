@@ -1,0 +1,8 @@
+.short-films {
+  display: flex;
+  gap: 14px;
+  padding: 0 30px;
+  border-left: 1px solid #404040;
+  height: 40px;
+  align-items: center;
+}
