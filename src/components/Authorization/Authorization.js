@@ -1,14 +1,13 @@
 import React from 'react';
 import Button from '../Button/Button';
-import Link from '../Link/Link';
 import './Authorization.css'
 
-const Authorization = () => {
+const Authorization = ({ handleRegistrationClick, handleLoginClick }) => {
   return (
-    <nav className='authorization'>
-      <Link linkText='Регистрация'/>
-      <Button buttonText='Войти' />
-    </nav>
+    <div className='authorization'>
+      <Button buttonText='Регистрация' type='registration' onClick={ handleRegistrationClick } />
+      <Button buttonText='Войти' type='login' onClick={ handleLoginClick } />
+    </div>
   );
 }
 
