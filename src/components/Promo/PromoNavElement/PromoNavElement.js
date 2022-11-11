@@ -1,11 +1,12 @@
 import React from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
 import './PromoNavElement.css';
 
 const PromoNavElement = ({ textElement, goTo }) => {
   return (
-    <a href={`#${goTo}`} className='promo__nav-element'>
+    <Link className='promo__nav-element' to={`#${goTo}`}>
       { textElement }
-    </a>
+    </Link>
   );
 }
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import './Logo.css'
 
-const Logo = () => {
+const Logo = ({ handleLogoClick }) => {
+
   return (
-    <div className='logo'></div>
+    <div className='logo' onClick={ handleLogoClick } ></div>
   );
 }
 
