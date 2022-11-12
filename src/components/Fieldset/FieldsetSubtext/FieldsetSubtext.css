@@ -1,0 +1,14 @@
+.fieldset__subtext {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8b8b8b;
+  text-align: center  ;
+}
+
+@media screen and (max-width: 395px){
+  .fieldset__subtext {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
