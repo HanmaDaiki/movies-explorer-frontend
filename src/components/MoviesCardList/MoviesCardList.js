@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
-const MoviesCardList = ({ films }) => {
+const MoviesCardList = ({ films, type }) => {
   const [counterSlice, setCounterSlice] = useState(7);
 
   function moreClick() {
@@ -14,7 +14,7 @@ const MoviesCardList = ({ films }) => {
     <section className='movies-card-list'>
       {
         films.slice(0, counterSlice).map(film => {
-          return <MoviesCard key={film.id} film={film} />
+          return <MoviesCard key={film.id} film={film} type={ type }/>
         })
       }
       <Button onClick={ moreClick } type='more' buttonText='Еще' />
