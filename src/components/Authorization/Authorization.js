@@ -1,12 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import './Authorization.css'
 
-const Authorization = ({ handleRegistrationClick, handleLoginClick }) => {
+const Authorization = () => {
+  const navigate = useNavigate();
+
+  function handleClickReg() {
+    navigate('/signup');
+  };
+
+  function handleClickLog() {
+    navigate('/signin');
+  };
+
+
   return (
     <div className='authorization'>
-      <Button buttonText='Регистрация' type='registration' onClick={ handleRegistrationClick } />
-      <Button buttonText='Войти' type='login' onClick={ handleLoginClick } />
+      <Button buttonText='Регистрация' type='registration' onClick={ handleClickReg } />
+      <Button buttonText='Войти' type='login' onClick={ handleClickLog } />
     </div>
   );
 }
