@@ -1,12 +1,12 @@
 import React from 'react';
-import IconSearch from '../../../images/icon-search.svg';
+import SearchFormIconSearch from '../SearchFormIconSearch/SearchFormIconSearch';
 import SearchFormInputField from '../SearchFormInputField/SearchFormInputField';
 import './SearchFormInput.css';
 
 const SearchFormInput = () => {
   return (
     <div className='search-form__input'>
-      <img alt='Иконка поиска' src={ IconSearch } />
+      <SearchFormIconSearch />
       <SearchFormInputField />
     </div>
   );
