@@ -1,3 +1,11 @@
 .movies-card__info {
   margin: 22px 0 0 22px;
 }
+
+@media screen and (max-width: 600px) {
+  .movies-card__info {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 14px 0 0 12px;
+  }  
+}

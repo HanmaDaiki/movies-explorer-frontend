@@ -5,3 +5,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 600px) {
+  .movies-card {
+    position: relative;
+    height: 232px;
+    width: 300px;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+  }
+}

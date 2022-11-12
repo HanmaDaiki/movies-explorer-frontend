@@ -1,9 +1,9 @@
 import React from 'react';
 import './MoviesCardImage.css';
 
-const MoviesCardImage = ({ url }) => {
+const MoviesCardImage = ({ url, alt }) => {
   return (
-    <img className='movies-card__image' src={`https://api.nomoreparties.co${ url }`} />
+    <img className='movies-card__image' alt={ alt } src={`https://api.nomoreparties.co${ url }`} />
   );
 }
 

@@ -17,3 +17,20 @@
   background-position: center;
   margin-top: 30px;
 }
+
+@media screen and (max-width: 600px) {
+  .movies-card__like {
+    margin-top: 0;
+    position: absolute;
+    bottom: 36px;
+    right: 16px;
+  }
+
+  .movies-card__like_active {
+    margin-top: 0;
+    position: absolute;
+    bottom: 36px;
+    right: 16px;
+  }
+}
+

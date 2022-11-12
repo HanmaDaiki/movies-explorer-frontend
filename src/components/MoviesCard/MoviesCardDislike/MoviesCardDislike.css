@@ -1,0 +1,18 @@
+.movies-card__dislike {
+  width: 14px;
+  height: 12px;
+  background-image: url(../../../images/icon-close.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .movies-card__dislike {
+    margin-top: 0;
+    position: absolute;
+    bottom: 36px;
+    right: 16px;
+  }
+}
