@@ -27,7 +27,7 @@
   color: #fff;
   width: 396px;
   height: 45px;
-  margin: calc(69px - 20px) 0 0 0;
+  margin-top: auto;
 }
 
 .button.button_type_registration {
@@ -78,4 +78,97 @@
   font-weight: 400;
   background-color: rgba(0, 0, 0, 0%);
   color: #fff;
+}
+
+.button.button_type_popup-menu {
+  font-size: 18px;
+  line-height: 21.78px;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0%);
+  color: #fff;
+}
+
+.button.button_type_popup-menu-close {
+  width: 22px;
+  height: 22px;
+  background-image: url(../../images/icon-close.svg);
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0%);
+  background-repeat: none;
+  background-size: cover;
+  top: 22px;
+  right: 22px;
+}
+
+.button.button_type_burger-menu{
+  width: 44px;
+  height: 44px;
+  background-image: url(../../images/icon-burger-menu.svg);
+  background-color: rgba(0, 0, 0, 0%);
+  background-repeat: none;
+  background-size: cover;
+  display: none;
+}
+
+.button.button_type_link-form{
+  background-color: rgba(0, 0, 0, 0%);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4285f4;
+}
+
+.button.button_type_edit-profile {
+  background-color: rgba(0, 0, 0, 0%);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+  margin-top: 220px;
+}
+
+.button.button_type_exit-profile {
+  background-color: rgba(0, 0, 0, 0%);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #ee3465;
+  margin-top: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .button.button_type_burger-menu{
+    display: initial;
+    visibility: visible;
+  }
+
+  .button.button_type_edit-profile {
+    margin-top: 210px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .button.button_type_more {
+    width: 240px;
+  }
+  
+}
+
+@media screen and (max-width: 395px){
+  .button.button_type_form {
+    width: 260px;
+  }
+
+  .button.button_type_link-form {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .button.button_type_edit-profile {
+    margin-top: 379px;
+  }
 }
