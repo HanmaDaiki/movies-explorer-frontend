@@ -1,10 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import Fieldset from '../Fieldset/Fieldset';
 import './Register.css'
 
 const Register = () => {
-  
+  const navigate = useNavigate();
+
+  function handleClickEnter() {
+    navigate('/signin');
+  }
+
   const inputs = [
     {
       name: 'Имя',
@@ -25,8 +31,13 @@ const Register = () => {
 
   return (
     <form className='register'>
-      <Fieldset inputs={inputs}/>
-      <Button buttonText='Зарегистрироваться' buttonType='submit' type={`form`} />
+      <Fieldset 
+        inputs={inputs}
+        text='Добро пожаловать!' 
+        buttonText='Зарегистрироваться' 
+        subText={`Уже зарегистрированы?`}
+        subButton={<Button buttonText='Войти' onClick={ handleClickEnter } type='link-form' /> }
+        />
     </form>
   );
 }
