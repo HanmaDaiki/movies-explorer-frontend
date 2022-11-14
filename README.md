@@ -1,5 +1,5 @@
 # [ИТОГ ВЁРСТКИ](https://daikihanma.films.nomoredomains.icu)
-# [МАКЕТ](https://yadi.sk/d/rSiuNDsPAHmlkg)
+# [МАКЕТ](https://disk.yandex.ru/d/wvnbRRt0OPvpGA)
 
 
 # Getting Started with Create React App
