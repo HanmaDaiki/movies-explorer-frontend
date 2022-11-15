@@ -13,7 +13,7 @@ const MoviesCardLike = () => {
   }
 
   return (
-    <div className={`${active ? 'movies-card__like_active' : 'movies-card__like'}`} onClick={ cardLikeClick }  />
+    <button className={`${active ? 'movies-card__like_active' : 'movies-card__like'}`} onClick={ cardLikeClick }  />
   );
 }
 

@@ -7,7 +7,7 @@ const MoviesCardDislike = () => {
   }
 
   return (
-    <div className='movies-card__dislike' onClick={ cardDislikeClick }  />
+    <button className='movies-card__dislike' onClick={ cardDislikeClick }  />
   );
 }
 

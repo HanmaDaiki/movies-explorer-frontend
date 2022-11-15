@@ -6,6 +6,9 @@
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 30px;
+  background-color: rgba(0,0,0,0%);
+  border: none;
+  cursor: pointer;
 }
 
 .movies-card__like_active {
@@ -16,6 +19,17 @@
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 30px;
+  background-color: rgba(0,0,0,0%);
+  border: none;
+  cursor: pointer;
+}
+
+.movies-card__like:hover {
+  opacity: 0.7;
+}
+
+.movies-card__like_active:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 600px) {
