@@ -9,6 +9,12 @@
   line-height: 20px;
 }
 
+.search-form__input-field:focus {
+  outline: 1px solid rgba(139, 139, 139, 30%);
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
 .search-form__input-field::placeholder {
   color: #8b8b8b;
   font-weight: 400;
