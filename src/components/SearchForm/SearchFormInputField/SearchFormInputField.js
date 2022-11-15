@@ -3,7 +3,7 @@ import './SearchFormInputField.css';
 
 const SearchFormInputField = () => {
   return (
-    <input type='text' className='search-form__input-field' placeholder='Фильм'/>
+    <input type='text' className='search-form__input-field' placeholder='Фильм' required/>
   );
 }
 
