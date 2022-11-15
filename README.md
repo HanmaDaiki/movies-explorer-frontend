@@ -1,3 +1,7 @@
+# [ИТОГ ВЁРСТКИ](https://daikihanma.films.nomoredomains.icu)
+# [МАКЕТ](https://disk.yandex.ru/d/wvnbRRt0OPvpGA)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
