@@ -1,6 +1,7 @@
 .profile {
   width: 100%;
   display: flex;
+  box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
   padding: 0 0 0 44px;
@@ -8,6 +9,8 @@
 
 @media screen and (max-width: 768px) {
   .profile {
+    padding: 0;
+    justify-content: end;
     visibility: hidden;
   }
 }
