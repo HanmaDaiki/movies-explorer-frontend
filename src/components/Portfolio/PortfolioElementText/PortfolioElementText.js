@@ -1,11 +1,11 @@
 import React from 'react';
 import './PortfolioElementText.css';
 
-const PortfolioElementText = ({ link, name }) => {
+const PortfolioElementText = ({ name }) => {
   return (
-    <a href={link} className='portfolio__element-text' rel='noreferrer' target='_blank'>
+    <p className='portfolio__element-text'>
       {name}
-    </a>
+    </p>
   );
 }
 

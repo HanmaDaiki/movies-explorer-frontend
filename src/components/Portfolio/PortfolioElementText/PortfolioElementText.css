@@ -1,10 +1,11 @@
 .portfolio__element-text {
+  padding: 0;
+  margin: 0;
   font-weight: 400;
   font-size: 30px;
   line-height: 50px;
   letter-spacing: -.04em;
   color: #fff;
-  text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {
