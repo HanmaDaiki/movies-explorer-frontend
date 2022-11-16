@@ -1,0 +1,21 @@
+.promo__nav-element {
+  border-radius: 10px;
+  background-color: #303030;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  padding: 10px 17px;
+}
+
+.promo__nav-element:hover {
+  background-color: #3d3d3d;
+}
+
+@media screen and (max-width: 575px) {
+  .promo__nav-element {
+    padding: 5px 15.5px;
+    font-size: 10px;
+  }
+}

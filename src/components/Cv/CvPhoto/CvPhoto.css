@@ -1,0 +1,22 @@
+.cv__photo {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  background-position: center;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 868px) {
+  .cv__photo {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cv__photo {
+    width: 292px;
+    height: 352px;
+    margin: 0 0 40px;
+  }
+}

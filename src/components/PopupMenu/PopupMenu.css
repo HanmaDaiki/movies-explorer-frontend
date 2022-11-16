@@ -1,0 +1,25 @@
+.popup-menu {
+  display: none;
+  visibility: hidden;
+}
+
+.popup-menu_active {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  background-color: #202020;
+  height: 100vh;
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  visibility: visible;
+}
+
+@media screen and (max-width: 520px) {
+  .popup-menu_active {
+    width: 100%;
+  }
+}

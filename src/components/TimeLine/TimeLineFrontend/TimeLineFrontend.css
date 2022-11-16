@@ -1,0 +1,13 @@
+.time-line__frontend {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media screen and (max-width: 615px) {
+  .time-line__frontend {
+    width: 65%;
+    gap: 10px;
+  }
+}

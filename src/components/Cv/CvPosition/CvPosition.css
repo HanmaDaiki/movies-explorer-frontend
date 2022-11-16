@@ -1,0 +1,24 @@
+.cv__position {
+  width: 100%;
+  padding: 0;
+  margin: 0 0 26px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  color: #fff;
+}
+
+@media screen and (max-width: 868px) {
+  .cv__position {
+    margin: 0 0 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cv__position {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

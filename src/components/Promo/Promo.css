@@ -1,0 +1,21 @@
+.promo {
+  margin: 20px 40px 0;
+  background-color: #272727;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    margin: 20px 20px 0 20px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .promo {
+    margin: 14px 14px 0;
+  }
+}

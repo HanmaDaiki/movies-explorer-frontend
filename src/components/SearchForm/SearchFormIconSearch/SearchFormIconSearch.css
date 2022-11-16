@@ -1,0 +1,10 @@
+.search-form__icon-search {
+  display: initial;
+}
+
+
+@media screen and (max-width: 670px) {
+  .search-form__icon-search {
+    display: none;
+  }
+}

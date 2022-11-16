@@ -1,0 +1,174 @@
+.button {
+  padding: 0;
+  border: 0px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button.button_type_login {
+  padding: 8px 20px;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #3ddc84;
+  color: #000;
+}
+
+.button.button_type_form {
+  text-align: center;
+  font-size: 14px;
+  line-height: 16.94px;
+  background-color: #4286f4;
+  color: #fff;
+  width: 396px;
+  height: 45px;
+  margin-top: auto;
+}
+
+.button.button_type_registration {
+  font-size: 12px;
+  line-height: 16px;
+  background-color: rgba(0, 0, 0, 0%);
+  color: #fff;
+}
+
+.button.button_type_search-form {
+  background-color: #4286f4;
+  width: 80px;
+  height: 34px;
+  border-radius: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button.button_type_more {
+  width: 320px;
+  height: 36px;
+  background-color: rgba(0, 0, 0, 0%);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.52px;
+  color: #fff;
+  border: 1px solid #424242;
+}
+
+.button.button_type_account {
+  font-size: 14px;
+  line-height: 16px;
+  background-color: rgba(0, 0, 0, 0%);
+  color: #fff;
+}
+
+.button.button_type_link-films {
+  font-size: 13px;
+  line-height: 18px;
+  background-color: rgba(0, 0, 0, 0%);
+  color: #fff;
+}
+
+.button.button_type_link-films-saved {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0%);
+  color: #fff;
+}
+
+.button.button_type_popup-menu {
+  font-size: 18px;
+  line-height: 21.78px;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0%);
+  color: #fff;
+}
+
+.button.button_type_popup-menu-close {
+  width: 22px;
+  height: 22px;
+  background-image: url(../../images/icon-close.svg);
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0%);
+  background-repeat: none;
+  background-size: cover;
+  top: 22px;
+  right: 22px;
+}
+
+.button.button_type_burger-menu{
+  width: 44px;
+  height: 44px;
+  background-image: url(../../images/icon-burger-menu.svg);
+  background-color: rgba(0, 0, 0, 0%);
+  background-repeat: none;
+  background-size: cover;
+  display: none;
+}
+
+.button.button_type_link-form{
+  background-color: rgba(0, 0, 0, 0%);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4285f4;
+}
+
+.button.button_type_edit-profile {
+  background-color: rgba(0, 0, 0, 0%);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+  margin-top: 220px;
+}
+
+.button.button_type_exit-profile {
+  background-color: rgba(0, 0, 0, 0%);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #ee3465;
+  margin-top: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .button.button_type_burger-menu{
+    display: initial;
+    visibility: visible;
+  }
+
+  .button.button_type_edit-profile {
+    margin-top: 210px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .button.button_type_more {
+    width: 240px;
+  }
+  
+}
+
+@media screen and (max-width: 395px){
+  .button.button_type_form {
+    width: 260px;
+  }
+
+  .button.button_type_link-form {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .button.button_type_edit-profile {
+    margin-top: 379px;
+  }
+}

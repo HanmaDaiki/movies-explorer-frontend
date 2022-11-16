@@ -1,0 +1,11 @@
+.popup-menu__profile {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 99px;
+  cursor: pointer;
+}

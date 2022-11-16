@@ -1,0 +1,13 @@
+.settings-profile__form {
+  width: 410px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+@media screen and (max-width: 415px) {
+  .settings-profile__form {
+    width: 260px;
+  }
+}

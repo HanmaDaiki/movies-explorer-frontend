@@ -1,0 +1,6 @@
+.popup-menu__nav {
+  margin-top: 159px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}

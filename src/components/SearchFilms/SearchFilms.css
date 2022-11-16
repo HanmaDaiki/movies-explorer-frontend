@@ -1,0 +1,10 @@
+.search-films {
+  padding-bottom: 69px;
+  border-bottom: 1px solid #424242;
+}
+
+@media screen and (max-width: 670px) {
+  .search-films {
+    padding-bottom: 45px;
+  }
+}

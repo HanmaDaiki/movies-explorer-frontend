@@ -1,0 +1,15 @@
+.search-form__container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 19px 0 24px;
+}
+
+@media screen and (max-width: 670px) {
+  .search-form__container {
+    border-radius: 9px;
+    align-items: center;
+    height: 72px;
+    background-color: #222;
+  }
+}

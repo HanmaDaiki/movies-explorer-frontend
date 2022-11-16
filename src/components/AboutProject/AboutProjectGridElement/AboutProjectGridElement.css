@@ -1,0 +1,11 @@
+.about-project__grid-element {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+@media screen and (max-width: 615px) {
+  .about-project__grid-element  {
+    gap: 16px;
+  }
+}

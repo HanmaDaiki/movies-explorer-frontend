@@ -1,0 +1,24 @@
+.cv__description {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #fff;
+}
+
+@media screen and (max-width: 868px) {
+  .cv__description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cv__description {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 0 40px;
+  }
+}

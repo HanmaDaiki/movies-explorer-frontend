@@ -1,0 +1,13 @@
+.about-project__text-element {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+}
+
+@media screen and (max-width: 420px) {
+  .about-project__text-element {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
