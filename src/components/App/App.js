@@ -1,6 +1,7 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import './App.css';;
+import { mainApi } from '../../utils/MainApi';
 
 import Preloader from '../Preloader/Preloader';
 import PopupMenu from '../PopupMenu/PopupMenu';
@@ -13,7 +14,37 @@ const Login = React.lazy(() => import('../Login/Login'));
 const Register = React.lazy(() => import('../Register/Register'));
 
 function App() {
+  const token = localStorage.getItem('jwt');
+
   const [openPopupMenu, setOpenPopupMenu] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({
+    email: 'default@email.com',
+    name: 'MyNameIs',
+  });
+
+  useEffect(() => {
+    if(loggedIn) {
+      mainApi
+        .getUser(token)
+        .then(({ email, name }) => {
+          setCurrentUser({
+            email,
+            name
+          });
+        })
+        .catch(err => console.log(`Error ${err.status}`));
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    mainApi
+      .identificationUser(token)
+      .then(() => {
+        setLoggedIn(true);
+      })
+      .catch(err => console.log(`Error ${err.status}`));
+  }, []);
 
   function handleClosePopupMenu() {
     setOpenPopupMenu(false);
