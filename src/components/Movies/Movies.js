@@ -1,18 +1,17 @@
 import React from 'react';
 import SearchFilms from '../SearchFilms/SearchFilms';
 import './Movies.css';
-import { data } from '../../vendor/data';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-const Movies = ({ handleOpenPopupMenu }) => {
+const Movies = ({ dataFilms, handleOpenPopupMenu, loggedIn }) => {
   return (
     <>
-      <Header authorized={ true } handleOpenPopupMenu={ handleOpenPopupMenu } />
+      <Header authorized={ loggedIn } handleOpenPopupMenu={ handleOpenPopupMenu } />
       <main className='movies'>
         <SearchFilms />
-        <MoviesCardList films={ data } />
+        <MoviesCardList films={ dataFilms } />
       </main>
       <Footer />
     </>

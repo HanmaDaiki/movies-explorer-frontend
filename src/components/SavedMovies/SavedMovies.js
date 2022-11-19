@@ -6,10 +6,10 @@ import './SavedMovies.css';
 import { data } from '../../vendor/data';
 import SearchFilms from '../SearchFilms/SearchFilms';
 
-const SavedMovies = ({ handleOpenPopupMenu }) => {
+const SavedMovies = ({ loggedIn, handleOpenPopupMenu }) => {
   return (
     <>
-      <Header authorized={ true } handleOpenPopupMenu={ handleOpenPopupMenu } />
+      <Header authorized={ loggedIn } handleOpenPopupMenu={ handleOpenPopupMenu } />
       <main className='saved-movies'>
         <SearchFilms />
         <MoviesCardList films={ data } type='saved' />

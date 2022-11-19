@@ -7,10 +7,10 @@ import Promo from '../Promo/Promo';
 import Techs from '../Techs/Techs';
 import './Main.css';
 
-const Main = () => {
+const Main = ({ loggedIn, handleOpenPopupMenu }) => {
   return (
     <>
-      <Header authorized={ false } />
+      <Header authorized={ loggedIn } handleOpenPopupMenu={ handleOpenPopupMenu }/>
       <main className='main'>
         <Promo />
         <AboutProject />

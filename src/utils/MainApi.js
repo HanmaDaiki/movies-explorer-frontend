@@ -49,27 +49,45 @@ class MainApi {
 	}
 
 	getUser(jwt) {
+	
 		return fetch(`${this._url}/users/me`, {
-			method: 'GET',
-			credentials: 'include',
+			method: "GET",
 			headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${jwt}`,
       },
+			credentials: "include",
 		})
 		.then(this._checkResponse);
 	}
 
 	identificationUser(jwt) {
-    return fetch(`${this._url}/users/me`, {
-      method: "GET",
-      credentials: "include",
+    return fetch(`${this._url}/users/me/`, {
+			method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${jwt}`,
       },
-    }).then(this._checkResponse);
+			credentials: "include",
+    })
+		.then(this._checkResponse);
   }
+
+	updateUser({ email, name }, jwt){
+		return fetch(`${this._url}/users/me/`, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+			},
+			credentials: "include",
+			body: JSON.stringify({
+				email,
+				name,
+			}),
+		})
+		.then(this._checkResponse);
+	}
 }
 
-export const mainApi = new MainApi('api.daikihanma.films.nomoredomains.icu/api');
+export const mainApi = new MainApi('https://api.daikihanma.films.nomoredomains.icu/api');
