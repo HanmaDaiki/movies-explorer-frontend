@@ -25,7 +25,6 @@ const Register = ({ handleRegUser }) => {
     <form 
       className='register' 
       onSubmit={ handleSubmit }
-      noValidate={ isValid }
     >
       <fieldset className='register__fieldset'>
         <Logo />
@@ -77,7 +76,7 @@ const Register = ({ handleRegUser }) => {
           </span>
         </div>
 
-        <Button buttonText='Зарегистрироваться' buttonType='submit' type={`form`} />
+        <Button buttonText='Зарегистрироваться' buttonType='submit' type={`form`} disabled={ !isValid }/>
         <p className='register__subtext'>
           Уже зарегистрированы? <Button buttonText='Войти' onClick={ handleGoToLog } type='link-form' />
         </p>

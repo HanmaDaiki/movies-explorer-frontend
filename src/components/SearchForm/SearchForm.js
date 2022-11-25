@@ -10,7 +10,7 @@ import { useFormWithValidation } from '../../utils/Validation';
 const SearchForm = ({ filterMoviesByKeyword }) => {
   const [keyWord, setKeyWord] = useState(localStorage.getItem('keyWord') || '');
   const [switcher, setSwitcher] = useState(false);
-  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+  const { handleChange, errors, isValid } = useFormWithValidation();
 
   function handleSwitcherState(state) {
     setSwitcher(state);
@@ -31,7 +31,7 @@ const SearchForm = ({ filterMoviesByKeyword }) => {
   };
 
   return (
-    <form className='search-form' onSubmit={ handleSubmit } noValidate={ isValid } >
+    <form className='search-form' onSubmit={ handleSubmit }>
       <div className='search-form__container'>
         <div className='search-form__input'>
           <img className='search-form__icon-search' alt='Иконка поиска' src={ IconSearch } />

@@ -37,6 +37,12 @@
   color: #fff;
 }
 
+.button.button_type_form:disabled,
+.button.button_type_form[disabled] {
+  background-color: #20427a;
+}
+
+
 .button.button_type_search-form {
   background-color: #4286f4;
   width: 80px;
