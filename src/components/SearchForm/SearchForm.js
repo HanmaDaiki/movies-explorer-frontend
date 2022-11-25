@@ -48,7 +48,7 @@ const SearchForm = ({ filterMoviesByKeyword }) => {
             { errors.film }
           </span>
         </div>
-        <Button buttonText={ <img alt='Иконка поиска' src={ IconSearchButton } /> } buttonType='submit' type={`search-form`} />
+        <Button buttonText={ <img alt='Иконка поиска' src={ IconSearchButton } /> } buttonType='submit' type={`search-form`} disabled={ !isValid }/>
       </div>
       <ShortFilms handleSwitcherState={ handleSwitcherState }/>
     </form>

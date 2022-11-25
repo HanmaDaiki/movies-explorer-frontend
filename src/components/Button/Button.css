@@ -42,6 +42,10 @@
   background-color: #20427a;
 }
 
+.button.button_type_search-form:disabled,
+.button.button_type_search-form[disabled] {
+  background-color: #20427a;
+}
 
 .button.button_type_search-form {
   background-color: #4286f4;

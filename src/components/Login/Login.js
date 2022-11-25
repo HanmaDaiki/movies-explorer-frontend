@@ -57,7 +57,7 @@ const Login = ({ handleLogUser }) => {
           </span>
         </div>
 
-        <Button buttonText='Войти' buttonType='submit' type={`form`} />
+        <Button buttonText='Войти' buttonType='submit' type={`form`} disabled={ !isValid }/>
         <p className='login__subtext'>
           Ещё не зарегистрированы? <Button buttonText='Регистрация' type='link-form' onClick={ handleGoToReg }/>
         </p>
