@@ -11,7 +11,7 @@ class MoviesApi {
 		return Promise.reject(`Error ${res.status}`);
 	};
 
-  getFilms() {
+  getMovies() {
     return fetch(`${this._url}/beatfilm-movies`)
       .then(this._checkResponse)
       .then(data => {

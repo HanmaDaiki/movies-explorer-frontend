@@ -23,45 +23,47 @@ function App() {
     email: 'default@email.com',
     name: 'MyNameIs',
   });
-  const [dataFilms, setDataFilms] = useState([]);
+
+  const [dataMovies, setDataMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
 
   useEffect(() => {
     if(loggedIn) {
       navigate('/movies');
+      
       mainApi
         .getUser(localStorage.getItem('jwt'))
-        .then(({ email, name }) => {
-          setCurrentUser({
-            email,
-            name
-          });
-        }).catch(err => console.log(`Error ${err}`));
-      
+        .then((user) => setCurrentUser(user))
+        .catch(err => console.log(`Error ${err}`));
+
+      mainApi
+        .getSavedMovies(localStorage.getItem('jwt'))
+        .then(movies => setSavedMovies(movies))
+        .catch(err => console.log(`Error ${err}`));
+
       moviesApi
-        .getFilms()
-        .then(data => {
-          setDataFilms(data);
-        }).catch(err => console.log(`Error ${err}`));
+        .getMovies()
+        .then(movies => setDataMovies(movies))
+        .catch(err => console.log(`Error ${err}`));
     }
   }, [loggedIn]);
 
   useEffect(() => {
     mainApi
     .identificationUser(localStorage.getItem('jwt'))
-    .then(({ email, name }) => {
-      setCurrentUser({
-        email,
-        name
-      });
+    .then((user) => {
+      setCurrentUser(user);
       setLoggedIn(true);
-    })
-    .catch(err => console.log(`Error ${err}`));
+    }).catch(err => console.log(`Error ${err}`));
+
+    localStorage.removeItem('moviesSearchResult');
+    localStorage.removeItem('keyWord');
   }, []);
 
   function handleClosePopupMenu() {
     setOpenPopupMenu(false);
   };
-
+  
   function handleOpenPopupMenu() {
     setOpenPopupMenu(true);
   };
@@ -69,29 +71,22 @@ function App() {
   function handleRegUser(email, password, name) {
     mainApi
       .signUp(email, password, name)
-      .then(() => {
-        navigate('/signin');
-      }).catch(err => console.log(`Error ${err}`));
+      .then(() => navigate('/signin'))
+      .catch(err => console.log(`Error ${err}`));
   }
 
   function handleLogUser(email, password) {
     mainApi
       .signIn(email, password)
-      .then(() => {
-        setLoggedIn(true);
-        navigate('/movies');
-      }).catch(err => console.log(`Error ${err}`));
+      .then(() => setLoggedIn(true))
+      .catch(err => console.log(`Error ${err}`));
   }
 
   function updateUser(email, name) {
     mainApi
       .updateUser({ email, name }, localStorage.getItem('jwt'))
-      .then((user) => {
-        setCurrentUser({
-          email: user.email,
-          name: user.name
-        })
-      }).catch(err => console.log(`Error ${err}`));
+      .then(user => setCurrentUser(user))
+      .catch(err => console.log(`Error ${err}`));
   }
 
   function handleExitAccount() {
@@ -100,8 +95,42 @@ function App() {
       name: 'MyNameIs',
     });
     setLoggedIn(false);
-    localStorage.setItem('jwt', '')
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('keyWord');
+    localStorage.removeItem('switcher');
+    localStorage.removeItem('moviesSearchResult');
   }
+
+  function handleFollowMovie(movie) {
+    mainApi
+      .postSavedMovies(movie, localStorage.getItem('jwt'))
+      .then(() => {
+        mainApi
+          .getSavedMovies(localStorage.getItem('jwt'))
+          .then(movies => setSavedMovies(movies))
+          .catch(err => console.log(`Error ${err}`));
+      }) 
+      .catch(err => console.log(`Error ${err}`));
+  }
+
+  function handleUnfollowMovie(movie) {
+    mainApi
+      .deleteSavedMovie(movie._id, localStorage.getItem('jwt'))
+      .then(() => {
+        dataMovies.forEach(dataMovie => {
+          if(dataMovie.nameRU === movie.nameRU) {
+            delete dataMovie._id;
+          }
+        })
+        
+        mainApi
+          .getSavedMovies(localStorage.getItem('jwt'))
+          .then(movies => setSavedMovies(movies))
+          .catch(err => console.log(`Error ${err}`));
+      })
+      .catch(err => console.log(`Error ${err}`));
+  }
+
 
   return (
     <div className="app">
@@ -113,13 +142,23 @@ function App() {
               <Route path='/signup' element={ <Register handleRegUser={ handleRegUser } /> }/>
               <Route path='/movies' 
                 element={ loggedIn ? 
-                  <Movies dataFilms={ dataFilms } loggedIn={ loggedIn } handleOpenPopupMenu={ handleOpenPopupMenu } /> : 
+                  <Movies 
+                    handleFollowMovie={ handleFollowMovie }
+                    handleUnfollowMovie={ handleUnfollowMovie }
+                    dataMovies={ dataMovies }
+                    savedMovies={ savedMovies }
+                    loggedIn={ loggedIn } 
+                    handleOpenPopupMenu={ handleOpenPopupMenu } /> : 
                   <Navigate to='/signin' /> 
                 } 
               />
               <Route path='/saved-movies' 
                 element={ loggedIn ?
-                  <SavedMovies loggedIn={ loggedIn } handleOpenPopupMenu={ handleOpenPopupMenu } /> :
+                  <SavedMovies
+                    handleUnfollowMovie={ handleUnfollowMovie } 
+                    savedMovies={ savedMovies } 
+                    loggedIn={ loggedIn } 
+                    handleOpenPopupMenu={ handleOpenPopupMenu } /> :
                   <Navigate to='/signin' /> 
                 } 
               />

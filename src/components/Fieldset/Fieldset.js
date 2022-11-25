@@ -6,7 +6,7 @@ import './Fieldset.css';
 import FieldsetSubtext from './FieldsetSubtext/FieldsetSubtext';
 import FieldsetText from './FieldsetText/FieldsetText';
 
-const Fieldset = ({ inputs, text, buttonText, subText, subButton }) => {
+const Fieldset = ({ handleForm, inputs, text, buttonText, subText, subButton }) => {
   return (
     <fieldset className='fieldset'>
       <Logo />
@@ -16,7 +16,7 @@ const Fieldset = ({ inputs, text, buttonText, subText, subButton }) => {
           return <Input key={ index } input={ input } />
         })
       }
-      <Button buttonText={ buttonText } buttonType='submit' type={`form`} />
+      <Button buttonText={ buttonText } buttonType='submit' type={`form`} onClick={ handleForm } />
       <FieldsetSubtext text={ subText } button={ subButton } />
     </fieldset>
   );

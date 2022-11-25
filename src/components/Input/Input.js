@@ -6,7 +6,7 @@ const Input = ({ input }) => {
   return (
     <div>
       <Label name={ input.name } forName={ input.forName } />
-      <input className='input' name={ input.forName } type={ input.type } />
+      <input className='input' name={ input.forName } type={ input.type } required={input.required}/>
     </div>
   );
 }

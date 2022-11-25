@@ -2,6 +2,15 @@
   padding: 70px 70px 80px;
 }
 
+.movies__nothing-found {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+}
+
 @media screen and (max-width: 768px) {
   .movies {
     padding: 60px 30px 70px;
@@ -11,5 +20,10 @@
 @media screen and (max-width: 350px) {
   .movies {
     padding: 60px 30px 80px;
+  }
+
+  .movies__nothing-found{
+    font-size: 29px;
+    line-height: 37px;
   }
 }

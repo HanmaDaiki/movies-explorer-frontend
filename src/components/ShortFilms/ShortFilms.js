@@ -3,10 +3,10 @@ import Switcher from '../Switcher/Switcher';
 import './ShortFilms.css';
 import ShortFilmsText from './ShortFilmsText/ShortFilmsText';
 
-const ShortFilms = () => {
+const ShortFilms = ({ handleSwitcherState }) => {
   return (
     <div className='short-films'>
-      <Switcher />
+      <Switcher handleSwitcherState={ handleSwitcherState } />
       <ShortFilmsText />
     </div>
   );

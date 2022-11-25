@@ -88,6 +88,54 @@ class MainApi {
 		})
 		.then(this._checkResponse);
 	}
+
+	getSavedMovies(jwt) {
+		return fetch(`${this._url}/movies`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+			},
+			credentials: "include",
+		})
+		.then(this._checkResponse);
+	}
+	
+	postSavedMovies(movie, jwt) {
+		return fetch(`${this._url}/movies`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+			},
+			credentials: "include",
+			body: JSON.stringify({
+				country: movie.country,
+				director: movie.director,
+				duration: movie.duration,
+				year: movie.year,
+				description: movie.description,
+				image: movie.image,
+				trailerLink: movie.trailerLink,
+				thumbnail: movie.thumbnail,
+				movieId: movie.movieId,
+				nameRU: movie.nameRU,
+				nameEN: movie.nameEN
+			})
+		})
+		.then(this._checkResponse);
+	}
+
+	deleteSavedMovie(id, jwt) {
+		return fetch(`${this._url}/movies/${id}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+        "Authorization": `Bearer ${jwt}`,
+			},
+			credentials: "include",
+		})
+	}
 }
 
 export const mainApi = new MainApi('https://api.daikihanma.films.nomoredomains.icu/api');
