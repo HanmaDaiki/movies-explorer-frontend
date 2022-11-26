@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import isEmail from "validator/lib/isEmail";
 
 //хук управления формой
 export function useForm() {
@@ -26,7 +27,12 @@ export function useFormWithValidation() {
     const value = target.value;
     setValues({...values, [name]: value});
     setErrors({...errors, [name]: target.validationMessage });
-    setIsValid(target.closest("form").checkValidity());
+
+    if(name === 'email') {
+      setIsValid(isEmail(value));
+    } else {
+      setIsValid(target.closest("form").checkValidity());
+    };
   };
 
   const resetForm = useCallback(
