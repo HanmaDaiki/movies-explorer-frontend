@@ -9,6 +9,7 @@ import Preloader from '../Preloader/Preloader';
 import PopupMenu from '../PopupMenu/PopupMenu';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import SettingsProfile from '../SettingsProfile/SettingsProfile';
+import { UpdateMovies } from '../../utils/UpdateMovies';
 
 const Main = React.lazy(() => import('../Main/Main'));
 const Movies = React.lazy(() => import('../Movies/Movies'));
@@ -26,6 +27,12 @@ function App() {
 
   const [dataMovies, setDataMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState(JSON.parse(localStorage.getItem('moviesSearchResult')) || []);
+  
+  useEffect(() => {
+    setFilteredMovies(UpdateMovies(filteredMovies, savedMovies));
+    localStorage.setItem('moviesSearchResult', JSON.stringify(UpdateMovies(filteredMovies, savedMovies)));
+  }, [savedMovies]);
 
   useEffect(() => {
     if(loggedIn) {
@@ -55,9 +62,6 @@ function App() {
       setCurrentUser(user);
       setLoggedIn(true);
     }).catch(err => console.log(`Error ${err}`));
-
-    localStorage.removeItem('moviesSearchResult');
-    localStorage.removeItem('keyWord');
   }, []);
 
   function handleClosePopupMenu() {
@@ -104,11 +108,8 @@ function App() {
   function handleFollowMovie(movie) {
     mainApi
       .postSavedMovies(movie, localStorage.getItem('jwt'))
-      .then(() => {
-        mainApi
-          .getSavedMovies(localStorage.getItem('jwt'))
-          .then(movies => setSavedMovies(movies))
-          .catch(err => console.log(`Error ${err}`));
+      .then((newMovi) => {
+        setSavedMovies([...savedMovies, newMovi]);
       }) 
       .catch(err => console.log(`Error ${err}`));
   }
@@ -117,18 +118,25 @@ function App() {
     mainApi
       .deleteSavedMovie(movie._id, localStorage.getItem('jwt'))
       .then(() => {
-        dataMovies.forEach(dataMovie => {
+        const localStorageData = JSON.parse(localStorage.getItem('moviesSearchResult'));
+        const newSavedMovies = savedMovies.filter(savedMovie => savedMovie._id !== movie._id);
+
+        localStorageData.map(dataMovie => {
           if(dataMovie.nameRU === movie.nameRU) {
             delete dataMovie._id;
           }
-        })
-        
-        mainApi
-          .getSavedMovies(localStorage.getItem('jwt'))
-          .then(movies => setSavedMovies(movies))
-          .catch(err => console.log(`Error ${err}`));
+          return dataMovie;
+        });
+
+        localStorage.setItem('moviesSearchResult', JSON.stringify(localStorageData));
+        setFilteredMovies(localStorageData);
+        setSavedMovies(newSavedMovies);
       })
       .catch(err => console.log(`Error ${err}`));
+  }
+
+  function handleUpdateFilteredMovies(newData) {
+    setFilteredMovies(newData);
   }
 
 
@@ -142,7 +150,9 @@ function App() {
               <Route path='/signup' element={ <Register handleRegUser={ handleRegUser } /> }/>
               <Route path='/movies' 
                 element={ loggedIn ? 
-                  <Movies 
+                  <Movies
+                    filteredMovies={ filteredMovies }
+                    handleUpdateFilteredMovies={ handleUpdateFilteredMovies }
                     handleFollowMovie={ handleFollowMovie }
                     handleUnfollowMovie={ handleUnfollowMovie }
                     dataMovies={ dataMovies }

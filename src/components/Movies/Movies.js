@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Movies.css';
 
 import SearchMovies from '../SearchMovies/SearchMovies';
@@ -8,13 +8,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { UpdateMovies } from '../../utils/UpdateMovies';
 
-const Movies = ({ dataMovies, savedMovies, loggedIn, handleOpenPopupMenu, handleFollowMovie, handleUnfollowMovie }) => {
-  const [filteredMovies, setFilteredMovies] = useState(JSON.parse(localStorage.getItem('moviesSearchResult')) || []);
-  
-  useEffect(() => {
-    setFilteredMovies(UpdateMovies(filteredMovies, savedMovies));
-  }, [savedMovies]) 
-
+const Movies = ({ filteredMovies, dataMovies, savedMovies, loggedIn, handleOpenPopupMenu, handleFollowMovie, handleUnfollowMovie, handleUpdateFilteredMovies }) => {
   async function filterMoviesByKeyword(keyword, switcher) {
     const result = await dataMovies.filter(movie => {
       if (switcher) {
@@ -27,7 +21,7 @@ const Movies = ({ dataMovies, savedMovies, loggedIn, handleOpenPopupMenu, handle
     const updateMovies = await UpdateMovies(result, savedMovies);
 
     localStorage.setItem('moviesSearchResult', JSON.stringify(updateMovies));
-    setFilteredMovies(updateMovies);
+    handleUpdateFilteredMovies(updateMovies);
   }
 
   return (
