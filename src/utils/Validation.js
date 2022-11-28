@@ -30,6 +30,11 @@ export function useFormWithValidation() {
 
     if(name === 'email') {
       setIsValid(isEmail(value));
+      if (!isEmail(value)) {
+        setErrors({...errors, ['email']: 'Введите подходящий Email' })
+      } else {
+        setErrors({...errors, ['email']: '' })
+      }
     } else {
       setIsValid(target.closest("form").checkValidity());
     };

@@ -33,6 +33,7 @@ const Register = ({ handleRegUser }) => {
         <div className='register__input'>
           <label className='register__label' htmlFor='name'>Имя</label>
           <input 
+            minLength='2'
             className='register__input-field' 
             onChange={ handleChange } 
             value={ values.name || '' }
@@ -63,6 +64,7 @@ const Register = ({ handleRegUser }) => {
         <div className='register__input'>
           <label className='register__label' htmlFor='password'>Пароль</label>
           <input 
+            minLength='3'
             className='register__input-field' 
             onChange={ handleChange } 
             value={ values.password || '' } 

@@ -2,7 +2,6 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 import './App.css';
 import { mainApi } from '../../utils/MainApi';
-import { moviesApi } from '../../utils/MoviesApi';
 import { UserContext } from '../../contexts/UserContext';
 
 import Preloader from '../Preloader/Preloader';
@@ -10,6 +9,8 @@ import PopupMenu from '../PopupMenu/PopupMenu';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import SettingsProfile from '../SettingsProfile/SettingsProfile';
 import { UpdateMovies } from '../../utils/UpdateMovies';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 const Main = React.lazy(() => import('../Main/Main'));
 const Movies = React.lazy(() => import('../Movies/Movies'));
@@ -18,14 +19,14 @@ const Register = React.lazy(() => import('../Register/Register'));
 
 function App() {
   const navigate = useNavigate();
-  const [openPopupMenu, setOpenPopupMenu] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
     email: 'default@email.com',
     name: 'MyNameIs',
   });
+  const [isInfoTooltip, setIsInfoToolip] = useState(false);
+  const [isPopupMenu, setIsPopupmenu] = useState(false);
 
-  const [dataMovies, setDataMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState(JSON.parse(localStorage.getItem('moviesSearchResult')) || []);
   
@@ -36,8 +37,6 @@ function App() {
 
   useEffect(() => {
     if(loggedIn) {
-      navigate('/movies');
-      
       mainApi
         .getUser(localStorage.getItem('jwt'))
         .then((user) => setCurrentUser(user))
@@ -47,11 +46,6 @@ function App() {
         .getSavedMovies(localStorage.getItem('jwt'))
         .then(movies => setSavedMovies(movies))
         .catch(err => console.log(`Error ${err}`));
-
-      moviesApi
-        .getMovies()
-        .then(movies => setDataMovies(movies))
-        .catch(err => console.log(`Error ${err}`));
     }
   }, [loggedIn]);
 
@@ -59,31 +53,38 @@ function App() {
     mainApi
     .identificationUser(localStorage.getItem('jwt'))
     .then((user) => {
+      
       setCurrentUser(user);
       setLoggedIn(true);
     }).catch(err => console.log(`Error ${err}`));
   }, []);
 
-  function handleClosePopupMenu() {
-    setOpenPopupMenu(false);
+  function handleClosePopup() {
+    setIsInfoToolip(false);
+    setIsPopupmenu(false);
   };
   
   function handleOpenPopupMenu() {
-    setOpenPopupMenu(true);
+    setIsPopupmenu(true);
   };
+
+  function handleOpenInfoToolip() {
+    setIsInfoToolip(true);
+  }
 
   function handleRegUser(email, password, name) {
     mainApi
       .signUp(email, password, name)
-      .then(() => navigate('/signin'))
+      .then(() => handleLogUser(email, password))
       .catch(err => console.log(`Error ${err}`));
   }
 
   function handleLogUser(email, password) {
     mainApi
       .signIn(email, password)
-      .then(() => setLoggedIn(true))
-      .catch(err => console.log(`Error ${err}`));
+      .then(() => {
+        setLoggedIn(true);
+      }).catch(err => console.log(`Error ${err}`));
   }
 
   function updateUser(email, name) {
@@ -145,49 +146,58 @@ function App() {
       <UserContext.Provider value={ currentUser }>
         <Suspense fallback={<Preloader />}>
           <Routes>
-              <Route path='/' element={ <Main handleOpenPopupMenu={ handleOpenPopupMenu } loggedIn={ loggedIn } /> }/>
-              <Route path='/signin' element={ <Login handleLogUser={ handleLogUser }/> }/>
-              <Route path='/signup' element={ <Register handleRegUser={ handleRegUser } /> }/>
-              <Route path='/movies' 
+              <Route exact path='/' element={ <Main handleOpenPopupMenu={ handleOpenPopupMenu } loggedIn={ loggedIn } /> }/>
+              <Route exact path='/404' element={ <NotFoundPage /> } />
+              <Route exact path='/signin' element={ <Login handleLogUser={ handleLogUser }/> }/>
+              <Route exact path='/signup' element={ <Register handleRegUser={ handleRegUser } /> }/>
+              <Route exact path='/movies'
                 element={ loggedIn ? 
                   <Movies
                     filteredMovies={ filteredMovies }
                     handleUpdateFilteredMovies={ handleUpdateFilteredMovies }
                     handleFollowMovie={ handleFollowMovie }
                     handleUnfollowMovie={ handleUnfollowMovie }
-                    dataMovies={ dataMovies }
                     savedMovies={ savedMovies }
                     loggedIn={ loggedIn } 
                     handleOpenPopupMenu={ handleOpenPopupMenu } /> : 
-                  <Navigate to='/signin' /> 
+                  <Navigate to='/' /> 
                 } 
               />
-              <Route path='/saved-movies' 
+              <Route exact path='/saved-movies' 
                 element={ loggedIn ?
                   <SavedMovies
                     handleUnfollowMovie={ handleUnfollowMovie } 
                     savedMovies={ savedMovies } 
                     loggedIn={ loggedIn } 
                     handleOpenPopupMenu={ handleOpenPopupMenu } /> :
-                  <Navigate to='/signin' /> 
+                  <Navigate to='/' /> 
                 } 
               />
-              <Route path='/profile' 
+              <Route exact path='/profile' 
                 element={ loggedIn ?
-                  <SettingsProfile 
+                  <SettingsProfile
+                    handleOpenInfoToolip={ handleOpenInfoToolip }
                     handleExitAccount={ handleExitAccount } 
                     updateUser={ updateUser } 
                     loggedIn={ loggedIn } 
                     myProfile={ currentUser } 
                     handleOpenPopupMenu={ handleOpenPopupMenu } 
                   /> :
-                  <Navigate to='/signin' /> 
+                  <Navigate to='/' /> 
                 } 
               />
+              <Route exact path='*' element={  <Navigate to='/404' /> } />
           </Routes>
         </Suspense>
-      </UserContext.Provider>          
-      <PopupMenu state={ openPopupMenu } closePopup={ handleClosePopupMenu } />
+      </UserContext.Provider>
+      {
+        isPopupMenu &&
+        <PopupMenu closePopup={ handleClosePopup } />
+      }
+      {
+        isInfoTooltip &&
+        <InfoTooltip closePopup={ handleClosePopup } />
+      }
     </div>
   );
 }

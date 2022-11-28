@@ -43,7 +43,8 @@ const Login = ({ handleLogUser }) => {
         </div>
         <div className='login__input'>
           <label className='login__label' htmlFor='password'>Пароль</label>
-          <input 
+          <input
+            minLength='3'
             className='login__input-field' 
             onChange={ handleChange } 
             value={ values.password || '' } 

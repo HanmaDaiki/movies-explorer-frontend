@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import ProfileIcon from '../../Profile/ProfileIcon/ProfileIcon';
 import './PopupMenuProfile.css';
 
-const PopupMenuProfile = () => {
+const PopupMenuProfile = ({ closePopup }) => {
   const navigate = useNavigate();
 
   function handleClickAccaunt() {
     navigate('/profile');
+    closePopup();
   }
 
   return (

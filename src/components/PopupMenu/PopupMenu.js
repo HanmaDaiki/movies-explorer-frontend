@@ -4,14 +4,14 @@ import './PopupMenu.css';
 import PopupMenuNav from './PopupMenuNav/PopupMenuNav';
 import PopupMenuProfile from './PopupMenuProfile/PopupMenuProfile';
 
-const PopupMenu = ({ state, closePopup }) => {
+const PopupMenu = ({ closePopup }) => {
   return (
-    <div onClick={ closePopup } className={`popup-menu${ state ? '_active' : '' }`}>
-      <Button type='popup-menu-close' />
+    <div className={'popup-menu_active'}>
+      <Button type='popup-menu-close' onClick={ closePopup } />
 
-      <PopupMenuNav />
+      <PopupMenuNav closePopup={ closePopup }/>
 
-      <PopupMenuProfile />
+      <PopupMenuProfile closePopup={ closePopup } />
     </div>
   );
 }

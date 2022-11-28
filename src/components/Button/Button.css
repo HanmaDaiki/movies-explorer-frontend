@@ -128,6 +128,15 @@
   color: #4285f4;
 }
 
+.button.button_type_not-found-page{
+  background-color: rgba(0, 0, 0, 0%);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #4285f4;
+  margin-bottom: 60px;
+}
+
 .button.button_type_edit-profile {
   background-color: rgba(0, 0, 0, 0%);
   font-weight: 500;
@@ -136,6 +145,11 @@
   text-align: center;
   color: #fff;
   margin-top: 220px;
+}
+
+.button.button_type_edit-profile:disabled,
+.button.button_type_edit-profile[disabled] {
+  color: #424242;
 }
 
 .button.button_type_exit-profile {

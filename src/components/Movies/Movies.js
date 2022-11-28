@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { UpdateMovies } from '../../utils/UpdateMovies';
 import './Movies.css';
 
 import SearchMovies from '../SearchMovies/SearchMovies';
 import Preloader from '../Preloader/Preloader';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { UpdateMovies } from '../../utils/UpdateMovies';
+const MoviesCardList = React.lazy(() => import('../MoviesCardList/MoviesCardList'));
 
-const Movies = ({ filteredMovies, dataMovies, savedMovies, loggedIn, handleOpenPopupMenu, handleFollowMovie, handleUnfollowMovie, handleUpdateFilteredMovies }) => {
-  async function filterMoviesByKeyword(keyword, switcher) {
+const Movies = ({ filteredMovies, savedMovies, loggedIn, handleOpenPopupMenu, handleFollowMovie, handleUnfollowMovie, handleUpdateFilteredMovies }) => {
+  async function filterMoviesByKeyword(keyword, switcher, dataMovies) {
     const result = await dataMovies.filter(movie => {
       if (switcher) {
         return movie.nameRU.toLowerCase().includes(keyword.toLowerCase()) && movie.duration <= 40;
@@ -28,18 +28,15 @@ const Movies = ({ filteredMovies, dataMovies, savedMovies, loggedIn, handleOpenP
     <>
       <Header authorized={ loggedIn } handleOpenPopupMenu={ handleOpenPopupMenu }/>
       <main className='movies'>
-        <SearchMovies filterMoviesByKeyword={ filterMoviesByKeyword } />
-        {
-          filteredMovies.length > 0 ?
-            filteredMovies[0] === 'Ничего не найдено' ?
-            <h1 className='movies__nothing-found'>Ничего не найдено</h1> :
-            <MoviesCardList 
-              movies={ filteredMovies }
-              type={'movies'} 
-              handleFollowMovie={ handleFollowMovie }
-              handleUnfollowMovie={ handleUnfollowMovie } /> :
-            <Preloader />
-        }
+        <SearchMovies filterMoviesByKeyword={ filterMoviesByKeyword }  movies={ true }/>
+        <Suspense fallback={ <Preloader /> }>
+          <MoviesCardList 
+            movies={ filteredMovies }
+            type={'movies'} 
+            handleFollowMovie={ handleFollowMovie }
+            handleUnfollowMovie={ handleUnfollowMovie }
+          />
+        </Suspense>
       </main>
       <Footer />
     </>
