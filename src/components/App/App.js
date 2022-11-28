@@ -84,6 +84,7 @@ function App() {
       .signIn(email, password)
       .then(() => {
         setLoggedIn(true);
+        navigate('/movies');
       }).catch(err => console.log(`Error ${err}`));
   }
 
