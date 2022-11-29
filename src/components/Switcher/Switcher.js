@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Switcher.css';
 import SwitcherItem from './SwitcherItem/SwitcherItem';
 
-const Switcher = ({ handleSwitcherState }) => {
+const Switcher = ({ handleSwitcherState, filterMoviesBySwitcher, dataMovies, keyword }) => {
   const [switcher, setSwitcher] = useState(false);
   
   useEffect(() => {
@@ -18,6 +18,7 @@ const Switcher = ({ handleSwitcherState }) => {
       setSwitcher(true);
     };
 
+    filterMoviesBySwitcher(keyword, !switcher, dataMovies);
     handleSwitcherState(!switcher);
   }
 

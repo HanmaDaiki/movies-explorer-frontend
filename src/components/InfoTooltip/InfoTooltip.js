@@ -1,8 +1,7 @@
 import React from "react";
-import accept from "../../images/accept.png"
 import './InfoTooltip.css';
 
-function InfoTooltip({ closePopup }) {
+function InfoTooltip({ closePopup, text }) {
   return (
     <div className={`tooltip tooltip_active`}>
       <div className="tooltip__overlay" onClick={closePopup}></div>
@@ -12,13 +11,8 @@ function InfoTooltip({ closePopup }) {
           className="tooltip__close"
           type="button"
         ></button> 
-        <img
-          className="tooltip__image"
-          src={accept}
-          alt="Картинка успешной смены данных пользователя"
-        />
         <span className="tooltip__title">
-          Данные пользователя успешно изменены!
+          { text }
         </span>
       </div>
     </div>

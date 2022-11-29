@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../Button/Button';
-import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
+import MoviesCard from '../MoviesCard/MoviesCard';
 
-const MoviesCardList = ({ movies, type, handleFollowMovie, handleUnfollowMovie }) => {
+
+const MoviesCardList = ({ movies, type, handleFollowMovie, handleUnfollowMovie, setMoreFunctionUpdate }) => {
   const [counterSlice, setCounterSlice] = useState(getCounterSlice());
+
+  useEffect(() => {
+    const number = getCounterSlice();
+    setMoreFunctionUpdate({ update: setCounterSlice, number: number });
+  }, [])
 
   function getCounterSlice() {
     if(window.innerWidth <= 480) {

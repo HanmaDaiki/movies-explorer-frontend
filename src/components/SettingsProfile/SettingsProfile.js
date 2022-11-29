@@ -38,7 +38,7 @@ const SettingsProfile = ({ loggedIn, handleOpenPopupMenu, updateUser, handleExit
   function handleSubmit(event) {
     event.preventDefault();
     updateUser(email, name);
-    handleOpenInfoToolip();
+    handleOpenInfoToolip('Ваши данные успешно обновлены!');
     setValid(false);
   }
 
