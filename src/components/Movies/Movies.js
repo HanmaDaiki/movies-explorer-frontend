@@ -22,7 +22,6 @@ const Movies = ({
   const [moreFuntionUpdate, setMoreFunctionUpdate] = useState({update: () => {}, number: 0});
 
   function filterMoviesByKeyword(keyword, switcher, dataMovies) {
-    setIsPreloader(true);
     moreFuntionUpdate.update(moreFuntionUpdate.number);
     const result =  dataMovies.filter((movie) => {
       if (switcher) {
@@ -44,7 +43,6 @@ const Movies = ({
     const updateMovies = UpdateMovies(result, savedMovies);
     localStorage.setItem('moviesSearchResult', JSON.stringify(updateMovies));
     handleUpdateFilteredMovies(updateMovies);
-    setTimeout(setIsPreloader, 250, false);
   }
 
   return (

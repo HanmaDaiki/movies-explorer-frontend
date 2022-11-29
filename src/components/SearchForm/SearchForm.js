@@ -5,17 +5,19 @@ import Button from '../Button/Button';
 import IconSearch from '../../images/icon-search.svg';
 import IconSearchButton from '../../images/icon-search-withe.svg';
 import ShortFilms from '../ShortFilms/ShortFilms';
+import { moviesApi } from '../../utils/MoviesApi';
 
 const SearchForm = ({
   filterMoviesByKeyword,
   savedMovies,
   movies,
+  setIsPreloader
 }) => {
   const [keyWord, setKeyWord] = useState(
     movies ? localStorage.getItem('keyWord') || '' : ''
   );
   const [switcher, setSwitcher] = useState(false);
-  const dataMovies = JSON.parse(localStorage.getItem('allDataMovie'));
+  const [dataMovies, setDataMovies ]= useState(JSON.parse(localStorage.getItem('allDataMovie')));
   const [firstSearch, setFirstSearch] = useState(true);
   const [error, setError] = useState({ status: false, text: '' });
 
@@ -25,17 +27,30 @@ const SearchForm = ({
 
   function handleSubmit(event) {
     event.preventDefault();
+    
     if (keyWord.replaceAll(' ', '') === '') {
       setError({ status: true, text: 'Нужно ввести ключевое слово' });
     } else {
       setError({ status: false, text: '' });
+
       if (savedMovies) {
         filterMoviesByKeyword(keyWord, switcher);
       }
 
       if (firstSearch && movies) {
+        setIsPreloader(true);
+        if (!localStorage.getItem('allDataMovie')) {
+          moviesApi
+            .getMovies()
+            .then((movies) => {
+              localStorage.setItem('allDataMovie', JSON.stringify(movies));
+              setDataMovies(movies);
+            })
+            .catch((err) => console.log(`Error ${err}`));
+        }
         filterMoviesByKeyword(keyWord, switcher, dataMovies);
         setFirstSearch(false);
+        setIsPreloader(false);
       }
 
       if (movies) {

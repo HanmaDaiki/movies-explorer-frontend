@@ -46,15 +46,6 @@ function App() {
         .getSavedMovies(localStorage.getItem('jwt'))
         .then(movies => setSavedMovies(movies))
         .catch(err => console.log(`Error ${err}`));
-
-      if (!localStorage.getItem('allDataMovie')) {
-        moviesApi
-          .getMovies()
-          .then((movies) => {
-            localStorage.setItem('allDataMovie', JSON.stringify(movies));
-          })
-          .catch((err) => console.log(`Error ${err}`));
-      }
     }
   }, [loggedIn]);
 
