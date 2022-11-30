@@ -15,7 +15,7 @@ const MoviesCardList = ({ movies, type, handleFollowMovie, handleUnfollowMovie, 
   return (
       <section className='movies-card-list'>
         {
-          movies.slice(0, conunterSlice).map(movie => {
+          movies.slice(0, counterSlice).map(movie => {
             return <MoviesCard
               key={ movie.id || movie.movieId }
               movie={ movie } 
