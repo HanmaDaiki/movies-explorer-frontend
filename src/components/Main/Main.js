@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AboutMe from '../AboutMe/AboutMe';
 import AboutProject from '../AboutProject/AboutProject';
 import Footer from '../Footer/Footer';
@@ -7,10 +8,10 @@ import Promo from '../Promo/Promo';
 import Techs from '../Techs/Techs';
 import './Main.css';
 
-const Main = () => {
+const Main = ({ loggedIn, handleOpenPopupMenu }) => {
   return (
     <>
-      <Header authorized={ false } />
+      <Header authorized={ loggedIn } handleOpenPopupMenu={ handleOpenPopupMenu }/>
       <main className='main'>
         <Promo />
         <AboutProject />

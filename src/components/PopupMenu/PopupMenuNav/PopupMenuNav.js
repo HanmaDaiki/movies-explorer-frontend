@@ -3,19 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../Button/Button';
 import './PopupMenuNav.css';
 
-const PopupMenuNav = () => {
+const PopupMenuNav = ({ closePopup }) => {
   const navigate = useNavigate();
 
   function handleClickMain() {
     navigate('/');
+    closePopup();
   }
 
   function handleClickFilms() {
     navigate('/movies');
+    closePopup();
   }
 
   function handleClickSavedFilms() {
     navigate('/saved-movies');
+    closePopup();
   }
 
   return (

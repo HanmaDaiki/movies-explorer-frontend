@@ -1,6 +1,13 @@
 # [ИТОГ ВЁРСТКИ](https://daikihanma.films.nomoredomains.icu)
 # [МАКЕТ](https://disk.yandex.ru/d/wvnbRRt0OPvpGA)
 
+# Link frontend
+https://daikihanma.films.nomoredomains.icu/
+# Link backend
+https://api.daikihanma.films.nomoredomains.icu/api
+# Pull Request
+https://github.com/HanmaDaiki/movies-explorer-frontend/pull/2
+
 
 # Getting Started with Create React App
 

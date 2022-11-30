@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../Button/Button';
-import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
+import MoviesCard from '../MoviesCard/MoviesCard';
 
-const MoviesCardList = ({ films, type }) => {
-  const [counterSlice, setCounterSlice] = useState(7);
+
+const MoviesCardList = ({ movies, type, handleFollowMovie, handleUnfollowMovie, conunterSlice }) => {
+  const [counterSlice, setCounterSlice] = useState(conunterSlice);
 
   function moreClick() {
-    setCounterSlice(counterSlice + 7);
-  };
+    setCounterSlice(counterSlice + conunterSlice);
+  }
+  
 
   return (
-    <section className='movies-card-list'>
-      {
-        films.slice(0, counterSlice).map(film => {
-          return <MoviesCard key={film.id} film={film} type={ type }/>
-        })
-      }
-      <Button onClick={ moreClick } type='more' buttonText='Еще' />
-    </section>
+      <section className='movies-card-list'>
+        {
+          movies.slice(0, counterSlice).map(movie => {
+            return <MoviesCard
+              key={ movie.id || movie.movieId }
+              movie={ movie } 
+              type={ type }
+              handleFollowMovie={ handleFollowMovie }
+              handleUnfollowMovie={ handleUnfollowMovie } />
+          })
+        }
+        {
+          conunterSlice >= movies.length ? <></> : <Button onClick={ moreClick } type='more' buttonText='Еще' />
+        }
+      </section>
   );
 }
 

@@ -1,43 +1,88 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useFormWithValidation } from '../../utils/Validation';
 import Button from '../Button/Button';
-import Fieldset from '../Fieldset/Fieldset';
+import Logo from '../Logo/Logo';
 import './Register.css'
 
-const Register = () => {
+const Register = ({ handleRegUser }) => {
   const navigate = useNavigate();
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+  
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleRegUser(values.email, values.password, values.name);
+  }
 
-  function handleClickEnter() {
+  function handleGoToLog() {
     navigate('/signin');
   }
 
-  const inputs = [
-    {
-      name: 'Имя',
-      type: 'text',
-      forName: 'name'
-    },
-    {
-      name: 'E-mail',
-      type: 'email',
-      forName: 'email'
-    },
-    {
-      name: 'Пароль',
-      type: 'password',
-      forName: 'password'
-    }
-  ];
+  useEffect(() => resetForm(), [resetForm])
+
 
   return (
-    <form className='register'>
-      <Fieldset 
-        inputs={inputs}
-        text='Добро пожаловать!' 
-        buttonText='Зарегистрироваться' 
-        subText={`Уже зарегистрированы?`}
-        subButton={<Button buttonText='Войти' onClick={ handleClickEnter } type='link-form' /> }
-        />
+    <form 
+      className='register' 
+      onSubmit={ handleSubmit }
+    >
+      <fieldset className='register__fieldset'>
+        <Logo />
+        <h1 className='register__fieldset-title'>Добро пожаловать!</h1>
+
+        <div className='register__input'>
+          <label className='register__label' htmlFor='name'>Имя</label>
+          <input 
+            minLength='2'
+            className='register__input-field' 
+            onChange={ handleChange } 
+            value={ values.name || '' }
+            type='text' 
+            name='name' 
+            required 
+          />
+          <span 
+            className='register__error'>
+            { errors.name }
+          </span>
+        </div>
+        <div className='register__input'>
+          <label className='register__label' htmlFor='email'>E-mail</label>
+          <input 
+            className='register__input-field' 
+            onChange={ handleChange } 
+            value={ values.email || '' } 
+            type='email' 
+            name='email' 
+            required 
+          />
+          <span 
+            className='register__error'>
+            { errors.email }
+          </span>
+        </div>
+        <div className='register__input'>
+          <label className='register__label' htmlFor='password'>Пароль</label>
+          <input 
+            minLength='3'
+            className='register__input-field' 
+            onChange={ handleChange } 
+            value={ values.password || '' } 
+            type='password' 
+            name='password' 
+            required 
+          /> 
+          <span 
+            className='register__error'>
+            { errors.password }
+          </span>
+        </div>
+
+        <Button buttonText='Зарегистрироваться' buttonType='submit' type={`form`} disabled={ !isValid }/>
+        <p className='register__subtext'>
+          Уже зарегистрированы? <Button buttonText='Войти' onClick={ handleGoToLog } type='link-form' />
+        </p>
+      </fieldset>
     </form>
   );
 }
