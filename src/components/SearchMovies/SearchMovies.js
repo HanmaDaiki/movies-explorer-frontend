@@ -8,10 +8,12 @@ const SearchMovies = ({
   savedMovies,
   movies,
   setIsPreloader,
+  setConunterSlice
 }) => {
   return (
     <section className="search-films">
       <SearchForm
+        setConunterSlice={setConunterSlice}
         filterMoviesByKeyword={filterMoviesByKeyword}
         savedMovies={savedMovies}
         movies={movies}

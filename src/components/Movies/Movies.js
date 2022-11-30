@@ -18,11 +18,9 @@ const Movies = ({
 }) => {
   const [isPreloader, setIsPreloader] = useState(false);
   const [isNotFoundSearch, setIsNotFoundSearch] = useState(false);
-  const [moreFuntionUpdate, setMoreFunctionUpdate] = useState({update: () => {}, number: 0});
+  const [conunterSlice, setConunterSlice] = useState(7)
 
   function filterMoviesByKeyword(keyword, switcher, dataMovies) {
-
-    moreFuntionUpdate.update(moreFuntionUpdate.number);
     const result =  dataMovies.filter((movie) => {
       if (switcher) {
         return (
@@ -53,6 +51,7 @@ const Movies = ({
           filterMoviesByKeyword={filterMoviesByKeyword}
           movies={true}
           setIsPreloader={setIsPreloader}
+          setConunterSlice={setConunterSlice}
         />
 
         {
@@ -61,7 +60,7 @@ const Movies = ({
             isNotFoundSearch ?
               <h1 style={{color: '#fff', padding: '50px 0', fontSize: '30px', width: '100%', textAlign: 'center'}}>Ничего не найдено</h1> :
               <MoviesCardList
-                setMoreFunctionUpdate={setMoreFunctionUpdate}
+                conunterSlice={conunterSlice}
                 movies={filteredMovies}
                 type={'movies'}
                 handleFollowMovie={handleFollowMovie}

@@ -4,30 +4,18 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 
-const MoviesCardList = ({ movies, type, handleFollowMovie, handleUnfollowMovie, setMoreFunctionUpdate }) => {
-  const [counterSlice, setCounterSlice] = useState(getCounterSlice());
-
-  useEffect(() => {
-    const number = getCounterSlice();
-    setMoreFunctionUpdate({ update: setCounterSlice, number: number });
-  }, [])
-
-  function getCounterSlice() {
-    if(window.innerWidth <= 480) {
-      return 5;
-    };
-    return 7;
-  }
+const MoviesCardList = ({ movies, type, handleFollowMovie, handleUnfollowMovie, conunterSlice }) => {
+  const [counterSlice, setCounterSlice] = useState(conunterSlice);
 
   function moreClick() {
-    setCounterSlice(counterSlice + getCounterSlice());
+    setCounterSlice(counterSlice + conunterSlice);
   }
   
 
   return (
       <section className='movies-card-list'>
         {
-          movies.slice(0, counterSlice).map(movie => {
+          movies.slice(0, conunterSlice).map(movie => {
             return <MoviesCard
               key={ movie.id || movie.movieId }
               movie={ movie } 
@@ -37,7 +25,7 @@ const MoviesCardList = ({ movies, type, handleFollowMovie, handleUnfollowMovie, 
           })
         }
         {
-          counterSlice >= movies.length ? <></> : <Button onClick={ moreClick } type='more' buttonText='Еще' />
+          conunterSlice >= movies.length ? <></> : <Button onClick={ moreClick } type='more' buttonText='Еще' />
         }
       </section>
   );

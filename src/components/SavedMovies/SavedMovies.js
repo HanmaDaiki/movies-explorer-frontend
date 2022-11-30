@@ -18,7 +18,7 @@ const SavedMovies = ({
   const [lastSwitcher, setLastSwithcer] = useState(false);
   const [isNotFoundSearch, setIsNotFoundSearch] = useState(false);
   const [isPreloader, setIsPreloader] = useState(false);
-  const [moreFuntionUpdate, setMoreFunctionUpdate] = useState({update: () => {}, number: 0});
+  const [conunterSlice, setConunterSlice] = useState(7)
 
 
   useEffect(() => {
@@ -26,7 +26,6 @@ const SavedMovies = ({
   }, [savedMovies]);
 
   function filterMoviesByKeyword(keyword, switcher) {
-    moreFuntionUpdate.update(moreFuntionUpdate.number);
     setLastKeyWord(keyword);
     setLastSwithcer(switcher);
     const result = savedMovies.filter((movie) => {
@@ -53,6 +52,7 @@ const SavedMovies = ({
       <Header authorized={loggedIn} handleOpenPopupMenu={handleOpenPopupMenu} />
       <main className="saved-movies">
         <SearchMovies
+          setConunterSlice={setConunterSlice}
           filterMoviesByKeyword={filterMoviesByKeyword}
           savedMovies={true}
         />
@@ -62,7 +62,7 @@ const SavedMovies = ({
             isNotFoundSearch ?
               <h1 style={{color: '#fff', padding: '50px 0', fontSize: '30px', width: '100%', textAlign: 'center'}}>Ничего не найдено</h1> :
               <MoviesCardList
-                setMoreFunctionUpdate={setMoreFunctionUpdate}
+                conunterSlice={conunterSlice}
                 movies={filteredSavedMovies}
                 type={'saved-movies'}
                 handleUnfollowMovie={handleUnfollowMovie}

@@ -10,6 +10,7 @@ const SearchForm = ({
   filterMoviesByKeyword,
   savedMovies,
   movies,
+  setConunterSlice
 }) => {
   const [keyWord, setKeyWord] = useState(
     movies ? localStorage.getItem('keyWord') || '' : ''
@@ -24,6 +25,13 @@ const SearchForm = ({
 
   function handleSubmit(event) {
     event.preventDefault();
+    if(window.innerWidth <= 480) {
+      setConunterSlice(5)
+    } else { 
+      setConunterSlice(7)
+    };
+    
+    
     if (keyWord.replaceAll(' ', '') === '') {
       setError({ status: true, text: 'Нужно ввести ключевое слово' });
     } else {
