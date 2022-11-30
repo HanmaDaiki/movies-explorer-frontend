@@ -20,13 +20,13 @@ const SavedMovies = ({
   const [isPreloader, setIsPreloader] = useState(false);
   const [moreFuntionUpdate, setMoreFunctionUpdate] = useState({update: () => {}, number: 0});
 
+
   useEffect(() => {
     filterMoviesByKeyword(lastKeyWord, lastSwitcher);
   }, [savedMovies]);
 
   function filterMoviesByKeyword(keyword, switcher) {
     moreFuntionUpdate.update(moreFuntionUpdate.number);
-    setIsPreloader(true);
     setLastKeyWord(keyword);
     setLastSwithcer(switcher);
     const result = savedMovies.filter((movie) => {
@@ -46,7 +46,6 @@ const SavedMovies = ({
       setIsNotFoundSearch(false);
       setFilteredSavedMovies(result);
     }
-    setTimeout(setIsPreloader, 200, false);
   }
 
   return (

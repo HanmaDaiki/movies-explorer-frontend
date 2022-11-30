@@ -26,9 +26,19 @@ const MoviesCard = ({ movie, type, handleFollowMovie, handleUnfollowMovie }) => 
         movieId: movie.id,
         nameRU: movie.nameRU,
         nameEN: movie.nameEN
-      }).finally(setState(true));
+      })
+      .then(res => {
+        if(res){
+          setState(true);
+        }
+      });
     } else {
-      handleUnfollowMovie(movie).finally(setState(false));
+      handleUnfollowMovie(movie)
+      .then(res => {
+        if(res) {
+          setState(false);
+        }
+      });;
     }
   }
   

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { UpdateMovies } from '../../utils/UpdateMovies';
 import './Movies.css';
 
@@ -7,7 +7,6 @@ import Preloader from '../Preloader/Preloader';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-
 const Movies = ({
   filteredMovies,
   savedMovies,
@@ -22,6 +21,7 @@ const Movies = ({
   const [moreFuntionUpdate, setMoreFunctionUpdate] = useState({update: () => {}, number: 0});
 
   function filterMoviesByKeyword(keyword, switcher, dataMovies) {
+
     moreFuntionUpdate.update(moreFuntionUpdate.number);
     const result =  dataMovies.filter((movie) => {
       if (switcher) {

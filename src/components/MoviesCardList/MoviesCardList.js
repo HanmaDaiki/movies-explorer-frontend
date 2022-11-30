@@ -37,7 +37,7 @@ const MoviesCardList = ({ movies, type, handleFollowMovie, handleUnfollowMovie, 
           })
         }
         {
-          counterSlice > movies.length ? <></> : <Button onClick={ moreClick } type='more' buttonText='Еще' />
+          counterSlice >= movies.length ? <></> : <Button onClick={ moreClick } type='more' buttonText='Еще' />
         }
       </section>
   );
